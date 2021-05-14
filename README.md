@@ -1,5 +1,5 @@
 # NodeExpressServer
-Simple Express Server using
+Simple Express HTTPS Server using:
 - [Bootstrap](https://getbootstrap.com/)
 - [jQuery](https://jquery.com/)
 - [Express](https://expressjs.com/it/)

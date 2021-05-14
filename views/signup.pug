@@ -1,0 +1,26 @@
+html  
+    include includes/head.pug
+    body 
+        include includes/menu.pug
+        div(class = "container")
+            div(class = "row")
+                div(class="col-sm-6")
+                    div(class="alert alert-light" role="alert")
+                        h2(class="display-4") Please signUP 
+                form(action="/signup" method="POST")
+                    div(class="form-row align-items-center")
+                        div(class="col-auto")
+                            label(class="sr-only" for="userid") Username 
+                            div(class="input-group mb-2")
+                                div(class="input-group-prepend")
+                                    div(class="input-group-text") User
+                                input(id="userid" name="userid" type="text" class="form-control" placeholder="user ID")
+                        div(class="col-auto")
+                            label(class="sr-only" for="password") Password 
+                            div(class="input-group mb-2")
+                                div(class="input-group-prepend")
+                                    div(class="input-group-text") Password 
+                                input(id="password" name="password" type="password" class="form-control" placeholder="password")
+                        div(class="col-auto")
+                            button(type="submit" class="btn btn-primary mb-2") Submit
+            include includes/message.pug

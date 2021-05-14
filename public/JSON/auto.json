@@ -1,0 +1,12 @@
+[
+  {"id_auto":"2","marca":"FIAT", "targa":"CD650MB","colore":"Grigio","anno":"2015","prezzo":"21000","percorrenza":"3000","id_modello":"2"},
+  {"id_auto":"2","marca":"Peugeot", "targa":"AB610AB","colore":"Rosso","anno":"2018","prezzo":"22000","percorrenza":"4000","id_modello":"2"},
+  {"id_auto":"2","marca":"Alfa Romeo", "targa":"CH650NM","colore":"Nero","anno":"2017","prezzo":"25000","percorrenza":"5000","id_modello":"2"},
+  {"id_auto":"2","marca":"Mercedes", "targa":"DZ440DB","colore":"Blu","anno":"2016","prezzo":"21000","percorrenza":"7000","id_modello":"2"},
+  {"id_auto":"2","marca":"AUDI", "targa":"CB632AB","colore":"Verde","anno":"2010","prezzo":"22000","percorrenza":"9000","id_modello":"2"},
+  {"id_auto":"2","marca":"FIAT", "targa":"CD234MB","colore":"Grigio","anno":"2015","prezzo":"21000","percorrenza":"3000","id_modello":"2"},
+  {"id_auto":"2","marca":"Peugeot", "targa":"AB425AB","colore":"Rosso","anno":"2018","prezzo":"13000","percorrenza":"4000","id_modello":"2"},
+  {"id_auto":"2","marca":"Alfa Romeo", "targa":"CH789NM","colore":"Nero","anno":"2017","prezzo":"12000","percorrenza":"5000","id_modello":"2"},
+  {"id_auto":"2","marca":"Mercedes", "targa":"DZ234DB","colore":"Blu","anno":"2016","prezzo":"19000","percorrenza":"7000","id_modello":"2"},
+  {"id_auto":"2","marca":"AUDI", "targa":"CB123AB","colore":"Verde","anno":"2010","prezzo":"21000","percorrenza":"9000","id_modello":"2"}
+]

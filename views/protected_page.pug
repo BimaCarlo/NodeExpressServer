@@ -1,0 +1,18 @@
+html 
+    include includes/head.pug
+    head 
+        title Protected Page 
+    body 
+        div(class="container")
+            p You have visited this page #{views} times
+            button(type="submit" class="btn btn-primary" onclick="document.location.href='/protected_page'") Reload
+            hr
+            p Do you want to log out ?
+            button(type="submit" class="btn btn-primary" onclick="document.location.href ='/logout'") Vai Mona!
+            div(class="jumbotron")
+                h1(class="display-4") Load Data 
+                button(id="btnAvvia" class="btn btn-primary" onclick="request_JSON()") Load Data 
+                hr
+                input(type="text" id="file" value="auto" class="input mb-2")
+                hr(class="my-4")
+                div(id="data" class="p-3 mb-5 bg-white rounded shadow-2-strong")

@@ -4,4 +4,5 @@ Simple Express Server using
 - Jquery
 - Express
 - Express-session
+- Pug
 - Mongoose

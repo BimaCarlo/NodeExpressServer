@@ -6,6 +6,9 @@ var login = require('./lib/login')(database);
 var signup = require('./lib/signup')(database);
 var page = require('./lib/page')(database);
 var logout = require('./lib/logout');
+//*Per il modulo HTTPS
+var https = require("https");
+var fs = require("fs");
 //----------------MIDDLEWARE----------------
 var app = express();
 app.use(express.static('public'));//faccio in modo che tutti i file all'interno della cartella public siano accessibili
@@ -21,4 +24,14 @@ app.use("/logout", logout);//tutte le richieste che inizieranno con login
 app.set("view engine","pug");
 app.set("views","./views");//i file pug sono nella cartella views
 //------------------------------------------
-app.listen(3000, function(){console.log("Port is active on port 3000");});
+
+
+https.createServer({
+    key: fs.readFileSync('./certificate/server.key'),
+    cert: fs.readFileSync('./certificate/server.cert')
+  }, app)
+  .listen(3000, function () {
+    console.log('Example app listening on port 3000! Go to https://localhost:3000/')
+  });
+
+//app.listen(3000, function(){console.log("Port is active on port 3000");});

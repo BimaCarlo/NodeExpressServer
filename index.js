@@ -7,6 +7,7 @@ var signup = require('./lib/signup')(database);
 var page = require('./lib/page')(database);
 var logout = require('./lib/logout');
 //*Per il modulo HTTPS
+var http = require('http');//reindirizzamento
 var https = require("https");
 var fs = require("fs");
 //----------------MIDDLEWARE----------------
@@ -25,13 +26,23 @@ app.set("view engine","pug");
 app.set("views","./views");//i file pug sono nella cartella views
 //------------------------------------------
 
-
-https.createServer({
-    key: fs.readFileSync('./certificate/server.key'),
+https.createServer(
+  {
+    key: fs.readFileSync('./certificate/server.key'),//*entrambi i file vengono generati con openssl
     cert: fs.readFileSync('./certificate/server.cert')
   }, app)
-  .listen(3000, function () {
+  .listen(3000, function () 
+  {
     console.log('Example app listening on port 3000! Go to https://localhost:3000/')
+    //*! IMPORTANTE : NON localhost:3000 (sennò va in http) MA https://localhost:3000
   });
-
 //app.listen(3000, function(){console.log("Port is active on port 3000");});
+
+//*--------------------------------
+//*MI SERVE PER IL REINDIRIZZAMENTO
+//*--------------------------------
+
+http.createServer(function (req, res) {
+  res.writeHead(302, { "Location": "https://localhost:3000"});
+  res.end();
+}).listen(8080);

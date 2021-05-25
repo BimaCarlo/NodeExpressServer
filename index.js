@@ -2,10 +2,11 @@ var database = require('./lib/database');
 var express = require('express');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-var login = require('./lib/login')(database);
 var signup = require('./lib/signup')(database);
 var page = require('./lib/page')(database);
 var logout = require('./lib/logout');
+var tokenGenerator = require('./lib/tokenGenerator')(database);
+var login = require('./lib/login')(database, tokenGenerator);
 //*Per il modulo HTTPS
 var http = require('http');//reindirizzamento
 var https = require("https");
@@ -21,6 +22,7 @@ app.use("/login", login);//tutte le richieste che inizieranno con login
 app.use("/signup", signup);//tutte le richieste che inizieranno con signup
 app.use("/protected_page", page);
 app.use("/logout", logout);//tutte le richieste che inizieranno con login
+app.use("/token", tokenGenerator.router);
 //------------------------------------------
 app.set("view engine","pug");
 app.set("views","./views");//i file pug sono nella cartella views

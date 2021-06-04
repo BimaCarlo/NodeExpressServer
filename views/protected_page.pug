@@ -1,7 +1,20 @@
 html 
     include includes/head.pug
     head 
-        title Protected Page 
+        title Protected Page
+        script(type="text/javascript").
+            let tokenLocalStorage =  window.localStorage.getItem('jwtoken');
+            if(tokenLocalStorage != null)
+            {
+                let data = { userid: sessionStorage.getItem("user").userid, password:sessionStorage.getItem("user").password };
+                console.log(data);
+                $.ajax({method:"/token"});
+                /*$.ajax({
+                    method: "post",
+                    url: "/token",
+                    data: { userid: sessionStorage.getItem("user").userid, password:sessionStorage.getItem("user").password }
+                }).done(function(path){alert(path); window.location = "https://localhost:3000/protected_page";});*/
+            }
     body 
         div(class="container")
             p You have visited this page #{views} times

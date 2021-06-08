@@ -2,16 +2,23 @@ html
     include includes/head.pug
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
     script(type="text/javascript").
-        window.localStorage.setItem('jwtoken','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImNhcmxvYmltYSIsInBhc3N3b3JkIjoiY2FybG9iaW1hIiwiYWxsb3dlZCI6dHJ1ZSwianRpIjoiN2VkZTViMDctNDRjMS00MjhjLTk3NjYtOTE5ZWM1YzI1MDVmIiwiaWF0IjoxNjIyODAzMTQwLCJleHAiOjE2MjI4MDY3NDB9.Ltr3tWNpswepyOFg6lpV5qV1SL_D8DbYM3erF8xLLM0');
         let tokenLocalStorage =  window.localStorage.getItem('jwtoken');
+        //alert(tokenLocalStorage);
         if(tokenLocalStorage != null)
         {
             $.ajax({
                 method: "get",
-                url: "/login",
+                url: "/protected_page",
                 data: { jwtoken: tokenLocalStorage }
-            }).done(function(path){alert(path); window.location = "https://localhost:3000/protected_page";});
-        }
+            }).done(
+            function(path){
+                console.log(path);
+                if(path=="/protected_page")
+                    window.location = "https://localhost:3000/protected_page";
+                else 
+                    window.localStorage.clear();
+            });
+        }        
     body 
         include includes/menu.pug
         div(class="container")

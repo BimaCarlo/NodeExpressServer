@@ -2,18 +2,20 @@ html
     include includes/head.pug
     head 
         title Protected Page
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
         script(type="text/javascript").
-            let tokenLocalStorage =  window.localStorage.getItem('jwtoken');
-            if(tokenLocalStorage != null)
-            {
-                let data = { userid: sessionStorage.getItem("user").userid, password:sessionStorage.getItem("user").password };
-                console.log(data);
-                $.ajax({method:"/token"});
-                /*$.ajax({
-                    method: "post",
-                    url: "/token",
-                    data: { userid: sessionStorage.getItem("user").userid, password:sessionStorage.getItem("user").password }
-                }).done(function(path){alert(path); window.location = "https://localhost:3000/protected_page";});*/
+            $(document).ready(function(){
+                //alert("Hi");
+            $.ajax({
+                method: "GET",
+                url: "/token",
+                })
+                .done((token)=>{window.localStorage.setItem("jwtoken", token);/*alert(token);*/})
+                .fail((err) => {console.log(err);});
+                });
+            function logOut(){
+                window.localStorage.clear("jwtoken");
+                document.location.href ='/logout';
             }
     body 
         div(class="container")
@@ -21,7 +23,7 @@ html
             button(type="submit" class="btn btn-primary" onclick="document.location.href='/protected_page'") Reload
             hr
             p Do you want to log out ?
-            button(type="submit" class="btn btn-primary" onclick="document.location.href ='/logout'") Vai Mona!
+            button(type="submit" id="btnLogOut" class="btn btn-primary" onclick="logOut()") Vai Mona!
             div(class="jumbotron")
                 h1(class="display-4") Load Data 
                 button(id="btnAvvia" class="btn btn-primary" onclick="request_JSON()") Load Data 

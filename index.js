@@ -3,10 +3,10 @@ var express = require('express');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var signup = require('./lib/signup')(database);
-var page = require('./lib/page')(database);
 var logout = require('./lib/logout');
 var tokenGenerator = require('./lib/tokenGenerator')(database);
 var login = require('./lib/login')(database, tokenGenerator);
+var page = require('./lib/page')(database, tokenGenerator);
 //*Per il modulo HTTPS
 var http = require('http');//reindirizzamento
 var https = require("https");
